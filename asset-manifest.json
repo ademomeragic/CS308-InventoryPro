@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CS308-InventoryPro/static/css/main.d9cf4f11.css",
+    "main.js": "/CS308-InventoryPro/static/js/main.d0e91e05.js",
+    "static/js/488.a5e6dc47.chunk.js": "/CS308-InventoryPro/static/js/488.a5e6dc47.chunk.js",
+    "index.html": "/CS308-InventoryPro/index.html",
+    "main.d9cf4f11.css.map": "/CS308-InventoryPro/static/css/main.d9cf4f11.css.map",
+    "main.d0e91e05.js.map": "/CS308-InventoryPro/static/js/main.d0e91e05.js.map",
+    "488.a5e6dc47.chunk.js.map": "/CS308-InventoryPro/static/js/488.a5e6dc47.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d9cf4f11.css",
+    "static/js/main.d0e91e05.js"
+  ]
+}
