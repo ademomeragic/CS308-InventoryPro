@@ -1,4 +1,6 @@
 import { FaSearch } from "react-icons/fa";
+import { BiBell } from "react-icons/bi";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 
 const Navbar = () => {
   return (
@@ -16,8 +18,30 @@ const Navbar = () => {
             </span>
             <input
               type="text"
-              className="w-full px-4 py-1 pl-12 rounded-xl shadow outline-none hidden md:block bg-lighter-blue text-white"
+              className="w-full px-4 py-1 pl-12 rounded-xl outline-none hidden md:block bg-lighter-blue text-white"
             />
+          </div>
+          <div className="text-white">
+            <BiBell className="w-6 h-6" />
+          </div>
+
+          <div className="relative">
+            <button className="text-white group">
+              <HiOutlineUserCircle className="w-7 h-7 mt-1" />
+              <div className="z-10 hidden absolute bg-white rounded-lg shadow w-28 group-focus:block top-full right-0">
+                <ul className="py-2 text-sm text-gray-950">
+                  <li>
+                    <a href="">Profile</a>
+                  </li>
+                  <li>
+                    <a href="">Settings</a>
+                  </li>
+                  <li>
+                    <a href="">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            </button>
           </div>
         </div>
       </div>

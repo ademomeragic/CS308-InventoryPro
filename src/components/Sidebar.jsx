@@ -19,7 +19,7 @@ const Sidebar = () => {
     <div className="flex">
       <div
         className={`bg-light-blue h-screen p-5 pt-0 ${
-          open ? "w-72" : "w-20"
+          open ? "w-52" : "w-20"
         } duration-300 relative`}
       >
         <BsArrowLeftShort
