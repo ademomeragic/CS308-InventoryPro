@@ -5,15 +5,16 @@ import { MdOutlineInventory2 } from "react-icons/md";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { HiOutlineUsers } from "react-icons/hi";
 import { LuSettings } from "react-icons/lu";
+import { Link } from "react-router-dom"; // Import Link
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", link: "/", icon: <LuLayoutDashboard /> },
-    { title: "Inventory", link: "/", icon: <MdOutlineInventory2 /> },
-    { title: "Reports", link: "/", icon: <HiOutlineDocumentReport /> },
-    { title: "Customers", link: "/", icon: <HiOutlineUsers /> },
-    { title: "Settings", link: "/", icon: <LuSettings /> },
+    { title: "Dashboard", link: "/dashboard", icon: <LuLayoutDashboard /> },
+    { title: "Inventory", link: "/inventory", icon: <MdOutlineInventory2 /> },
+    { title: "Reports", link: "/reports", icon: <HiOutlineDocumentReport /> },
+    { title: "Customers", link: "/customers", icon: <HiOutlineUsers /> },
+    { title: "Settings", link: "/settings", icon: <LuSettings /> },
   ];
   return (
     <div className="flex">
@@ -36,21 +37,20 @@ const Sidebar = () => {
                 className="text-white font-bold text-md flex items-center gap-x-4 cursor-pointer
                 p-2 hover:bg-light-white rounded-md mt-2"
               >
-                <div className="text-xl">{menu.icon}</div>
-                <span
-                  className={`text-base font-medium flex-1 ${
-                    !open && "hidden"
-                  }`}
-                >
-                  {menu.title}
-                </span>
+                <Link to={menu.link} className="flex items-center gap-x-4">
+                  <div className="text-xl">{menu.icon}</div>
+                  <span
+                    className={`text-base font-medium flex-1 ${
+                      !open && "hidden"
+                    }`}
+                  >
+                    {menu.title}
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
-      </div>
-      <div className="p-7">
-        <h1 className="text-2xl font-semibold">Dashboard</h1>
       </div>
     </div>
   );

@@ -2,14 +2,24 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import Inventory from "./components/Inventory";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <div className="w-full">
         <Navbar />
       </div>
-      <Sidebar />
+      <div className="flex flex-1">
+        <Sidebar />
+        <div className="flex-1 p-7 overflow-auto">
+          <Routes>
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 };
