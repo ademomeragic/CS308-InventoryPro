@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/CS308-InventoryPro/static/css/main.c51fece3.css",
-    "main.js": "/CS308-InventoryPro/static/js/main.ad96dfec.js",
+    "main.css": "/CS308-InventoryPro/static/css/main.15295a9d.css",
+    "main.js": "/CS308-InventoryPro/static/js/main.fc44cd3f.js",
     "static/js/488.a5e6dc47.chunk.js": "/CS308-InventoryPro/static/js/488.a5e6dc47.chunk.js",
     "index.html": "/CS308-InventoryPro/index.html",
-    "main.c51fece3.css.map": "/CS308-InventoryPro/static/css/main.c51fece3.css.map",
-    "main.ad96dfec.js.map": "/CS308-InventoryPro/static/js/main.ad96dfec.js.map",
+    "main.15295a9d.css.map": "/CS308-InventoryPro/static/css/main.15295a9d.css.map",
+    "main.fc44cd3f.js.map": "/CS308-InventoryPro/static/js/main.fc44cd3f.js.map",
     "488.a5e6dc47.chunk.js.map": "/CS308-InventoryPro/static/js/488.a5e6dc47.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c51fece3.css",
-    "static/js/main.ad96dfec.js"
+    "static/css/main.15295a9d.css",
+    "static/js/main.fc44cd3f.js"
   ]
 }
