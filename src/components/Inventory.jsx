@@ -5,7 +5,12 @@ import uuid from "react-uuid";
 
 const Inventory = () => {
   const { inventory, loading, setInventory } = useContext(InventoryContext);
-  const [newItem, setNewItem] = useState({ id: '', name: "", quantity: 0, date: formatDate(new Date()) });
+  const [newItem, setNewItem] = useState({
+    id: "",
+    name: "",
+    quantity: 0,
+    date: formatDate(new Date()),
+  });
 
   const addItem = (e) => {
     e.preventDefault();
@@ -13,10 +18,10 @@ const Inventory = () => {
       alert("Please enter a valid name and quantity.");
       return;
     }
-    const updatedInventory = [...inventory, {...newItem, id: uuid() }];
+    const updatedInventory = [...inventory, { ...newItem, id: uuid() }];
     console.log(updatedInventory);
     setInventory(updatedInventory);
-    setNewItem({ id: '', name: "", quantity: 0, date: formatDate(new Date()) });
+    setNewItem({ id: "", name: "", quantity: 0, date: formatDate(new Date()) });
   };
 
   if (loading) {
@@ -76,9 +81,8 @@ const Inventory = () => {
             type="date"
             value={newItem.date}
             onChange={(e) => {
-              setNewItem({ ...newItem, date: e.target.value })
-            }
-            }
+              setNewItem({ ...newItem, date: e.target.value });
+            }}
             placeholder="Date"
             aria-label="Date"
             className="px-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"

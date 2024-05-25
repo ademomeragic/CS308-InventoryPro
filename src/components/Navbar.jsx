@@ -5,7 +5,7 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 const Navbar = () => {
   return (
     <div className="flex">
-      <div className=" bg-light-blue px-7 py-3 flex justify-between w-full">
+      <div className="bg-light-blue px-7 py-3 flex justify-between w-full">
         <div className="items-center text-2xl">
           <span className="text-white font-bold">InventoryPro</span>
         </div>
@@ -24,7 +24,7 @@ const Navbar = () => {
           <div className="text-white">
             <BiBell className="w-6 h-6" />
           </div>
-
+          <div className=" text-white font-semibold ">Adem Omeragic</div>
           <div className="relative">
             <button className="text-white group">
               <HiOutlineUserCircle className="w-7 h-7 mt-1" />

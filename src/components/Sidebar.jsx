@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"; // Import Link
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", link: "/dashboard", icon: <LuLayoutDashboard /> },
+    { title: "Dashboard", link: "/", icon: <LuLayoutDashboard /> },
     { title: "Inventory", link: "/inventory", icon: <MdOutlineInventory2 /> },
     { title: "Reports", link: "/reports", icon: <HiOutlineDocumentReport /> },
     { title: "Customers", link: "/customers", icon: <HiOutlineUsers /> },

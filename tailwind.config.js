@@ -8,6 +8,9 @@ module.exports = {
         "lighter-blue": "#01AAAA",
         "light-white": "rgba(255,255,255,0.18)",
       },
+      strokeWidth: {
+        1: "0.5px",
+      },
     },
   },
   plugins: [],
