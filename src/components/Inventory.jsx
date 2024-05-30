@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
-
-// Utility function to generate a 6-digit ID
-const generateId = () => {
-  return Math.floor(100000 + Math.random() * 900000).toString();
-};
+import axios from "axios";
 
 // InventoryItem component
 const InventoryItem = ({ item, onDelete }) => {
   return (
     <tr className="border-b">
       <td className="px-4 py-2 text-center">{item.name}</td>
-      <td className="px-4 py-2 text-center">{item.id}</td>
-      <td className="px-4 py-2 text-center">{item.dateAdded}</td>
+      <td className="px-4 py-2 text-center">{item._id}</td> {/* Display _id */}
+      <td className="px-4 py-2 text-center">
+        {new Date(item.dateAdded).toLocaleDateString()}
+      </td>
       <td className="px-4 py-2 text-center">{item.quantity}</td>
       <td className="px-4 py-2 text-center">{item.productGroup}</td>
       <td className="px-4 py-2 text-center">
         <button
-          onClick={() => onDelete(item.id)}
+          onClick={() => onDelete(item._id)} // Use _id for deletion
           className="bg-red-500 hover:bg-red-400 text-white px-2 py-1 rounded-xl"
         >
           Delete
@@ -52,23 +50,57 @@ const Inventory = () => {
       alert("Please fill out all fields");
       return;
     }
-    setItems([...items, { ...newItem, id: generateId() }]);
-    setNewItem({
-      name: "",
-      dateAdded: "",
-      quantity: "",
-      productGroup: "",
-    });
+
+    const date = new Date(newItem.dateAdded);
+    if (isNaN(date)) {
+      alert("Invalid date format");
+      return;
+    }
+
+    // Add the new item to the database
+    axios
+      .post("http://localhost:5000/inventory/add", newItem)
+      .then((response) => {
+        const newItemData = {
+          ...newItem,
+          _id: response.data._id, // Ensure _id is used here
+          dateAdded: date,
+        };
+        setItems([...items, newItemData]);
+        setNewItem({
+          name: "",
+          dateAdded: "",
+          quantity: "",
+          productGroup: "",
+        });
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
   };
 
   const deleteItem = (id) => {
-    const itemToDelete = items.find((item) => item.id === id);
+    const itemToDelete = items.find((item) => item._id === id);
+    if (!itemToDelete) {
+      console.error("Item not found for deletion");
+      return;
+    }
+
     if (
       window.confirm(
         `Are you sure you want to delete product ${itemToDelete.name}?`
       )
     ) {
-      setItems(items.filter((item) => item.id !== id));
+      console.log("Deleting item with ID:", id);
+      // Delete the item from the database
+      axios
+        .delete(`http://localhost:5000/inventory/${id}`)
+        .then(() => {
+          setItems(items.filter((item) => item._id !== id));
+        })
+        .catch((error) => {
+          console.error("Error deleting item:", error);
+        });
     }
   };
 
@@ -82,6 +114,18 @@ const Inventory = () => {
       }),
     ]);
   };
+
+  useEffect(() => {
+    // Fetch inventory data from the database when the component mounts
+    axios
+      .get("http://localhost:5000/inventory")
+      .then((response) => {
+        setItems(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching inventory data:", error);
+      });
+  }, []);
 
   useEffect(() => {
     const dropdownButton = document.getElementById("dropdownDefault");
@@ -209,7 +253,7 @@ const Inventory = () => {
           </thead>
           <tbody>
             {items.map((item) => (
-              <InventoryItem key={item.id} item={item} onDelete={deleteItem} />
+              <InventoryItem key={item._id} item={item} onDelete={deleteItem} />
             ))}
           </tbody>
         </table>
